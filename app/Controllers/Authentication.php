@@ -79,8 +79,6 @@ class Authentication extends BaseController
         }
     }
 
-
-
     public function logouT()
     {
         // Lakukan proses logout, seperti menghapus session
