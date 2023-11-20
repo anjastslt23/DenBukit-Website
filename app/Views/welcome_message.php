@@ -60,9 +60,9 @@
             </ul>
         </div>
     </nav>
-    <header class="bg-primary text-white text-center py-5 mb-4">
+    <header class="text-black text-center py-5 mb-4" style="background-color: #96B6C5;">
         <div class="container">
-            <h1 class="font-weight-light">Selamat Datang di DenBukit</h1>
+            <h1 class="font-weight-bold">Selamat Datang di DenBukit</h1>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente asperiores atque laborum, harum quam ex vitae quas quae distinctio minima! Debitis voluptates tempore reprehenderit adipisci consequuntur cumque unde, omnis accusamus?</p>
         </div>
     </header>
@@ -122,10 +122,7 @@
                             <div class="card-body">
                                 <h5 class="card-title"><?= $lokasi['nama_lokasi'] ?></h5>
                                 <p class="text-muted"><?= $lokasi['tag_lokasi'] ?></p>
-                                <?php if ($lokasi['prioritas'] == 'Ya') : ?>
-                                    <p class="text-muted">Prioritas: Rekomendasi</p>
-                                <?php endif; ?>
-                                <a href="<?= base_url('lokasi/detailLokasi/' . $lokasi['id_lokasi']) ?>" class="btn btn-primary">Baca Selengkapnya</a>
+                                <a href="<?= base_url('detail_lokasi/' . $lokasi['id_lokasi']) ?>" class="btn btn-primary">Baca Selengkapnya</a>
                             </div>
                         </div>
                     </div>
@@ -225,9 +222,9 @@
         <!-- end main page -->
     </div>
     <!-- footer -->
-    <footer class="py-3 bg-dark">
+    <footer class="py-3" style="background-color: #96B6C5;">
         <div class="container">
-            <p class="m-0 text-center text-white">SLT Developer &copy; 2023</p>
+            <p class="m-0 text-center text-black">PemKab Buleleng &copy; 2023</p>
         </div>
     </footer>
     <!-- end footer -->

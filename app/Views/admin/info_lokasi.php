@@ -45,9 +45,9 @@
         </div>
     </main>
 
-    <footer class="py-3 mt-4 bg-dark">
+    <footer class="py-3" style="background-color: #96B6C5;">
         <div class="container">
-            <p class="m-0 text-center text-white">SLT Developer &copy; 2023</p>
+            <p class="m-0 text-center text-black">PemKab Buleleng &copy; 2023</p>
         </div>
     </footer>
 </body>
