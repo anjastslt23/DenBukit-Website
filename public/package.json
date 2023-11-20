@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "datatables.net": "^1.13.7",
+    "datatables.net-dt": "^1.13.7",
+    "jquery": "^3.7.1",
+    "sweetalert2": "^11.9.0",
+    "toastr": "^2.1.4"
+  }
+}
