@@ -63,7 +63,7 @@
     <header class="text-black text-center py-5 mb-4" style="background-color: #96B6C5;">
         <div class="container">
             <h1 class="font-weight-bold">Selamat Datang di DenBukit</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente asperiores atque laborum, harum quam ex vitae quas quae distinctio minima! Debitis voluptates tempore reprehenderit adipisci consequuntur cumque unde, omnis accusamus?</p>
+            <p>Selamat datang di DenBukit, website yang menyediakan informasi tempat-tempat wisata di Bali. Di sini, kamu bisa mengetahui berbagai destinasi wisata yang menarik dan populer di Bali, beserta tips, rekomendasi, dan ulasan yang bermanfaat. Kami akan membantu kamu merencanakan liburan impian kamu ke Bali dengan mudah dan nyaman. Ayo, jelajahi website DenBukit dan temukan keindahan Bali yang tak terlupakan!</p>
         </div>
     </header>
 
@@ -224,7 +224,7 @@
     <!-- footer -->
     <footer class="py-3" style="background-color: #96B6C5;">
         <div class="container">
-            <p class="m-0 text-center text-black">PemKab Buleleng &copy; 2023</p>
+            <p class="m-0 text-center text-black"><b>PemKab Buleleng &copy; 2023</b></p>
         </div>
     </footer>
     <!-- end footer -->

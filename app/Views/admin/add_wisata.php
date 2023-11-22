@@ -80,7 +80,7 @@
 
     <footer class="py-3" style="background-color: #96B6C5;">
         <div class="container">
-            <p class="m-0 text-center text-black">PemKab Buleleng &copy; 2023</p>
+            <p class="m-0 text-center text-black"><b>PemKab Buleleng &copy; 2023</b></p>
         </div>
     </footer>
 </body>
