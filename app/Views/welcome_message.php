@@ -200,22 +200,22 @@
             <div class="col-md-8 mb-4">
                 <h2>Tentang Kami</h2>
                 <hr>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio facere minima sapiente quia beatae, culpa commodi amet earum iste numquam vel, ratione in voluptas consequatur ex soluta, dolore aspernatur dicta?</p>
+                <p>DenBukit merupakan gabungan dari delapan Desa Wisata yang berada di Kabupaten Buleleng, sebagai bentuk kerjasama dalam mengembangkan potensi WISATA yang dimiliki setiap Desa.</p>
             </div>
             <div class="col-md-4 mb-5">
                 <h2>Kontak Kami</h2>
                 <hr>
                 <address>
-                    <strong>Perusahaan Kami</strong>
-                    <br>Jalan ....
-                    <br>Kota Tabanan, Provinsi Bali
+                    <strong>Alamat</strong>
+                    <br>Jln. Udayana No. 11, Singaraja
+                    <br>Kec. Buleleng, Kabupaten Buleleng, Bali 81116
                 </address>
                 <address>
-                    <abbr title="Phone">Telepon:</abbr>
-                    (021) 456-7890
-                    <br>
+                    <abbr title="Telepon">Telepon:</abbr>
+                    +62 87765310940
+                    <!-- <br>
                     <abbr title="Email">Email:</abbr>
-                    <a href="mailto:name@example.com">name@example.com</a>
+                    <a href="mailto:name@example.com">name@example.com</a> -->
                 </address>
             </div>
         </div>
