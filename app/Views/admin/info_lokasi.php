@@ -29,6 +29,7 @@
                     <article>
                         <h2><?= $infoloc['nama_lokasi'] ?></h2>
                         <p class="text-muted">Lokasi: <?= $infoloc['alamat_lokasi'] ?></p>
+                        <p class="text-muted">Kontak Terkait: <?= $infoloc['telp_admin'] ?></p>
                         <p class="text-muted">Harga Masuk: <b><?= $infoloc['harga'] ?></b></p>
                         <p class="text-muted">Tanggal Upload: <?= $infoloc['created_at'] ?></p>
                         <hr>

@@ -62,6 +62,7 @@ class Authentication extends BaseController
                     'id_admin' => $admin['id_admin'],
                     'email' => $admin['email_admin'],
                     'asal_desa' => $admin['asal_desa'],
+                    'telp_admin' => $admin['telp_admin'],
                     'nama' => $admin['nama_admin'], // Anda dapat menggantinya sesuai kebutuhan
                     'logged_in' => TRUE
                 ];

@@ -30,6 +30,7 @@ class AddWisata extends BaseController
 
         // Mendapatkan ID admin yang login (contoh: diambil dari sesi)
         $tag = session()->get('asal_desa');
+        $telp = session()->get('telp_admin');
 
         // Menggunakan helper generate_uuid() untuk membuat UUID baru
         $id_lokasi = Uuid::uuid4()->toString();
@@ -64,6 +65,7 @@ class AddWisata extends BaseController
                 'harga' => $this->request->getPost('harga_masuk'),
                 'deskripsi' => $this->request->getPost('deskripsi'),
                 'tag_lokasi' => $tag,
+                'telp_admin' => $telp,
                 // Tambahan field lain sesuai kebutuhan
             ];
 

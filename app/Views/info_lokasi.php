@@ -19,10 +19,10 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Beranda <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="<?= base_url('/') ?>">Beranda <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="signin">Login</a>
+                    <a class="nav-link" href="<?= base_url('signin') ?>">Login</a>
                 </li>
             </ul>
         </div>
@@ -42,6 +42,7 @@
                         <article>
                             <h2><?= $infoloc['nama_lokasi'] ?></h2>
                             <p class="text-muted">Lokasi: <?= $infoloc['alamat_lokasi'] ?></p>
+                            <p class="text-muted">Kontak Terkait: <?= $infoloc['telp_admin'] ?></p>
                             <p class="text-muted">Harga Masuk: <b><?= $infoloc['harga'] ?></b></p>
                             <p class="text-muted">Tanggal Upload: <?= $infoloc['created_at'] ?></p>
                             <hr>

@@ -12,7 +12,7 @@ class Lokasiwisata extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = true;
     protected $protectFields    = true;
-    protected $allowedFields    = ['id_lokasi', 'nama_lokasi', 'alamat_lokasi', 'foto_lokasi', 'harga', 'deskripsi', 'tag_lokasi', 'prioritas'];
+    protected $allowedFields    = ['id_lokasi', 'nama_lokasi', 'alamat_lokasi', 'foto_lokasi', 'harga', 'deskripsi', 'tag_lokasi', 'prioritas', 'telp_admin'];
 
     // Dates
     protected $useTimestamps = true;
