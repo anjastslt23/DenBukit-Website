@@ -79,14 +79,14 @@
                 <select name="desa" id="filterDesa" class="form-control">
                     <option value="">Semua Desa</option>
                     <!-- Tambahkan opsi desa sesuai kebutuhan -->
-                    <option value="tengallinggah">Tengallinggah</option>
+                    <option value="Desa Tengalinggah">Tengalinggah</option>
                     <option value="Desa Wanagiri">Wanagiri</option>
-                    <option value="wanagiri">Ambengan</option>
-                    <option value="wanagiri">Baktiseraga</option>
-                    <option value="wanagiri">Panji</option>
-                    <option value="wanagiri">Panjianom</option>
-                    <option value="wanagiri">Sambangan</option>
-                    <option value="wanagiri">Selat</option>
+                    <option value="Desa Ambengan">Ambengan</option>
+                    <option value="Desa Baktiseraga">Baktiseraga</option>
+                    <option value="Desa Panji">Panji</option>
+                    <option value="Desa Panjianom">Panjianom</option>
+                    <option value="Desa Sambangan">Sambangan</option>
+                    <option value="Desa Selat">Selat</option>
                     <!-- Tambahkan opsi desa lainnya -->
                 </select>
             </div>
