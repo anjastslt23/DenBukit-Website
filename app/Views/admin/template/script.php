@@ -44,6 +44,17 @@
         });
     });
 </script>
+<script>
+    $(document).ready(function() {
+        $('#event-table').DataTable({
+            "responsive": true, //responsifitas
+            "paging": false, // Aktifkan paging
+            "searching": true, // Aktifkan fitur pencarian
+            "ordering": false, // Aktifkan pengurutan
+            "info": true // Tampilkan informasi tabel
+        });
+    });
+</script>
 <!-- end datatables script -->
 <!-- Tinymce -->
 <script>

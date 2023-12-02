@@ -10,6 +10,7 @@ use CodeIgniter\HTTP\ResponseInterface;
 use Psr\Log\LoggerInterface;
 
 use App\Models\Admin;
+use App\Models\EventModel;
 use App\Models\Lokasiwisata;
 
 /**
@@ -33,6 +34,7 @@ abstract class BaseController extends Controller
     protected $session;
     protected $adminModel;
     protected $lokasiModel;
+    protected $eventModel;
 
     /**
      * An array of helpers to be loaded automatically upon
@@ -59,6 +61,7 @@ abstract class BaseController extends Controller
         $this->session = session();
         $this->adminModel = new Admin();
         $this->lokasiModel = new Lokasiwisata();
+        $this->eventModel = new EventModel();
         // Preload any models, libraries, etc, here.
 
         // E.g.: $this->session = \Config\Services::session();

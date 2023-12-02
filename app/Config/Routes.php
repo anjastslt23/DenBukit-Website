@@ -6,10 +6,14 @@ use CodeIgniter\Router\RouteCollection;
  * @var RouteCollection $routes
  */
 $routes->get('/', 'Home::index');
+$routes->get('artikel', 'Home::artikel');
+$routes->get('event', 'Home::event');
 $routes->get('filter', 'Home::filter');
 $routes->get('logout', 'Authentication::logouT');
 $routes->get('signin', 'Authentication::index');
+$routes->get('register', 'Authentication::register');
 $routes->post('checking', 'Authentication::signIn');
+$routes->post('register/process', 'Authentication::signUp');
 $routes->get('/detail_lokasi/(:segment)', 'Home::detailLoc/$1');
 
 

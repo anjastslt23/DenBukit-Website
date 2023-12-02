@@ -20,8 +20,10 @@ class AddWisata extends BaseController
         $validation->setRules([
             'nama_lokasi' => 'required',
             'alamat_lokasi' => 'required',
-            'harga_masuk' => 'required',
-            'foto_lokasi' => 'uploaded[foto_lokasi]|max_size[foto_lokasi,5120]|is_image[foto_lokasi]',
+            'harga_masuk' => 'required|numeric',
+            'foto_lokasi.*' => 'uploaded[foto_lokasi]|max_size[foto_lokasi,5120]|is_image[foto_lokasi]',
+            'cp_1' => 'required|numeric',
+            'cp_2' => 'required|numeric',
         ]);
 
         if (!$validation->withRequest($this->request)->run()) {
@@ -35,50 +37,77 @@ class AddWisata extends BaseController
         // Menggunakan helper generate_uuid() untuk membuat UUID baru
         $id_lokasi = Uuid::uuid4()->toString();
 
-        $foto = $this->request->getFile('foto_lokasi');
+        $fotos = $this->request->getFiles('foto_lokasi');
 
-        // Mengecek tipe file dan ukuran sebelum menyimpan
-        if ($foto->isValid() && !$foto->hasMoved()) {
-            // Mengecek tipe file yang diterima (hanya gambar)
-            $allowedTypes = ['jpg', 'jpeg', 'png', 'gif'];
-            if (!in_array($foto->getExtension(), $allowedTypes)) {
-                return redirect()->back()->withInput()->with('errors', ['Foto harus dalam format gambar (jpg, jpeg, png, gif).']);
+        // Inisialisasi array untuk menyimpan nama file foto
+        $fotoNames = [];
+
+        foreach ($fotos as $foto) {
+            foreach ($foto as $file) {
+                if ($file->isValid() && !$file->hasMoved()) {
+                    // Mengecek tipe file yang diterima (hanya gambar)
+                    $allowedTypes = ['jpg', 'jpeg', 'png', 'gif'];
+                    if (!in_array($file->getExtension(), $allowedTypes)) {
+                        return redirect()->back()->withInput()->with('errors', ['Foto harus dalam format gambar (jpg, jpeg, png, gif).']);
+                    }
+
+                    // Mengecek ukuran file (maksimal 5MB)
+                    if ($file->getSize() > 5 * 1024 * 1024) {
+                        return redirect()->back()->withInput()->with('errors', ['Ukuran foto tidak boleh lebih dari 5MB.']);
+                    }
+
+                    // Membuat nama unik untuk file foto
+                    $fotoNama = $file->getRandomName();
+
+                    // Pindahkan file foto ke folder public/assets/img
+                    $file->move(ROOTPATH . 'public/assets/img/', $fotoNama);
+
+                    // Simpan nama file ke dalam array
+                    $fotoNames[] = $fotoNama;
+                }
+            }
+        }
+        // Handle upload video jika diunggah
+        $video = $this->request->getFile('video_lokasi');
+        $videoNama = null;
+
+        if ($video->isValid() && !$video->hasMoved()) {
+            // Mengecek tipe file yang diterima (hanya video mp4)
+            $allowedTypesVideo = ['mp4'];
+            if (!in_array($video->getExtension(), $allowedTypesVideo)) {
+                return redirect()->back()->withInput()->with('errors', ['Video harus dalam format mp4.']);
             }
 
-            // Mengecek ukuran file (maksimal 5MB)
-            if ($foto->getSize() > 5 * 1024 * 1024) {
-                return redirect()->back()->withInput()->with('errors', ['Ukuran foto tidak boleh lebih dari 5MB.']);
-            }
+            // Membuat nama unik untuk file video
+            $videoNama = $video->getRandomName();
 
-            // Membuat nama unik untuk file foto
-            $fotoNama = $foto->getRandomName();
-
-            // Pindahkan file foto ke folder public/assets/img
-            $foto->move(ROOTPATH . 'public/assets/img/', $fotoNama);
-
-            // Data yang akan disimpan ke database
-            $data = [
-                'id_lokasi' => $id_lokasi,
-                'nama_lokasi' => $this->request->getPost('nama_lokasi'),
-                'alamat_lokasi' => $this->request->getPost('alamat_lokasi'),
-                'foto_lokasi' => $fotoNama,
-                'harga' => $this->request->getPost('harga_masuk'),
-                'deskripsi' => $this->request->getPost('deskripsi'),
-                'tag_lokasi' => $tag,
-                'telp_admin' => $telp,
-                // Tambahan field lain sesuai kebutuhan
-            ];
-
-            // Simpan data ke database
-            $this->lokasiModel->insert($data);
-
-            // Redirect atau berikan respons lain sesuai kebutuhan
-            return redirect()->to('admin/dashboard')->with('success', 'Lokasi berhasil ditambahkan');
+            // Pindahkan file video ke folder public/assets/videos
+            $video->move(ROOTPATH . 'public/assets/videos/', $videoNama);
         }
 
-        // Jika ada kesalahan saat mengunggah file
-        return redirect()->back()->withInput()->with('errors', ['Gagal mengunggah foto.']);
+        // Data yang akan disimpan ke database
+        $data = [
+            'id_lokasi' => $id_lokasi,
+            'nama_lokasi' => $this->request->getPost('nama_lokasi'),
+            'alamat_lokasi' => $this->request->getPost('alamat_lokasi'),
+            'harga' => $this->request->getPost('harga_masuk'),
+            'deskripsi' => $this->request->getPost('deskripsi'),
+            'tag_lokasi' => $tag,
+            'telp_admin' => $telp,
+            'cp_1' => $this->request->getPost('cp_1'),
+            'cp_2' => $this->request->getPost('cp_2'),
+            'foto_lokasi' => implode(',', $fotoNames), // Menyimpan nama file sebagai string dipisahkan koma
+            'video_lokasi' => $videoNama,
+            // Tambahan field lain sesuai kebutuhan
+        ];
+
+        // Simpan data ke database
+        $this->lokasiModel->insert($data);
+
+        // Redirect atau berikan respons lain sesuai kebutuhan
+        return redirect()->to('admin/dashboard')->with('success', 'Lokasi berhasil ditambahkan');
     }
+
 
     public function hapusLokasi($id_lokasi)
     {

@@ -10,9 +10,9 @@ class Lokasiwisata extends Model
     protected $primaryKey       = 'id_lokasi';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
-    protected $useSoftDeletes   = true;
+    protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['id_lokasi', 'nama_lokasi', 'alamat_lokasi', 'foto_lokasi', 'harga', 'deskripsi', 'tag_lokasi', 'prioritas', 'telp_admin'];
+    protected $allowedFields    = ['id_lokasi', 'nama_lokasi', 'alamat_lokasi', 'foto_lokasi', 'video_lokasi', 'harga', 'deskripsi', 'tag_lokasi', 'prioritas', 'telp_admin', 'cp_1', 'cp_2'];
 
     // Dates
     protected $useTimestamps = true;

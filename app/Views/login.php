@@ -70,6 +70,11 @@
         }
     </style>
 </head>
+<?php if (session()->has('success')) : ?>
+    <div class="alert alert-success" role="alert">
+        <?= session('success') ?>
+    </div>
+<?php endif; ?>
 
 <body>
     <div class="container">
@@ -105,6 +110,9 @@
                             </div>
                             <button type="submit" class="btn btn-primary btn-block">Login</button>
                         </form>
+                        <p class="text-center mt-3">
+                            Belum punya akun? <a href="<?= site_url('register') ?>">Daftar disini</a>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -112,7 +120,7 @@
     </div>
     <footer class="py-1 bg-dark">
         <div class="container">
-            <p class="m-0 text-center text-white">SLT Developer &copy; 2023</p>
+            <p class="m-0 text-center text-white">DenBukit &copy; 2023</p>
         </div>
     </footer>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>

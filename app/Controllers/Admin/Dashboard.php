@@ -9,9 +9,9 @@ class Dashboard extends BaseController
     public function index()
     {
         $asal_desa = session()->get('asal_desa');
-        $showdata = $this->lokasiModel->where('tag_lokasi', $asal_desa)->findAll();
+        $showarticle = $this->lokasiModel->where('tag_lokasi', $asal_desa)->findAll();
         $data['title'] = 'DenBukit | Admin Console';
-        $data['showdata'] = $showdata;
+        $data['showdata'] = $showarticle;
         return view('admin/dashboard', $data);
     }
 

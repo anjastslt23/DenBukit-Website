@@ -5,7 +5,7 @@
     <link rel="shortcut icon" href="<?= base_url('assets/required/brand.png') ?>" type="image/x-icon">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>DenBukit | Informasi Wisata</title>
+    <title><?= $title ?></title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <style>
         body {
@@ -38,6 +38,22 @@
             transition: background-color 0.3s, color 0.3s;
             /* Efek transisi hover */
         }
+
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background-color: #ffffff;
+            /* Ganti dengan warna latar belakang yang diinginkan */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            /* Optional: Tambahkan shadow jika diinginkan */
+        }
+
+        /* Optional: Gaya tambahan untuk link yang aktif */
+        .navbar-nav .nav-item.active .nav-link {
+            color: #007bff;
+            /* Ganti dengan warna teks yang diinginkan */
+        }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
 
@@ -52,11 +68,15 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item active">
-                    <a class="nav-link" href="<?= base_url('/') ?>">Beranda <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="<?= base_url('/') ?>">Beranda <span class="sr-only"></span></a>
                 </li>
+                <li><a class="nav-link scrollto" href="<?= base_url('artikel') ?>">Artikel</a></li>
+                <li><a class="nav-link scrollto" href="<?= base_url('event') ?>">Event</a></li>
+                <li><a class="nav-link scrollto" href="javascript:void(0);" onclick="scrollToSection('about')">Tentang</a></li>
                 <li class="nav-item">
                     <a class="nav-link" href="<?= base_url('signin') ?>">Login</a>
                 </li>
+
             </ul>
         </div>
     </nav>
@@ -68,168 +88,117 @@
     </header>
 
     <div class="container">
-        <!-- Artikel Lokasi Wisata -->
-        <h2>List Tempat Wisata</h2>
-
-        <!-- Formulir Filter -->
-        <form action="<?= base_url('filter') ?>" method="GET" class="mb-3">
-            <?= csrf_field() ?>
-            <div class="form-group">
-                <label for="filterDesa">Filter Berdasarkan Desa:</label>
-                <select name="desa" id="filterDesa" class="form-control">
-                    <option value="">Semua Desa</option>
-                    <!-- Tambahkan opsi desa sesuai kebutuhan -->
-                    <option value="Desa Tengalinggah">Tengalinggah</option>
-                    <option value="Desa Wanagiri">Wanagiri</option>
-                    <option value="Desa Ambengan">Ambengan</option>
-                    <option value="Desa Baktiseraga">Baktiseraga</option>
-                    <option value="Desa Panji">Panji</option>
-                    <option value="Desa Panjianom">Panjianom</option>
-                    <option value="Desa Sambangan">Sambangan</option>
-                    <option value="Desa Selat">Selat</option>
-                    <!-- Tambahkan opsi desa lainnya -->
-                </select>
-            </div>
-            <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="filterPrioritas" name="prioritas">
-                <label class="form-check-label" for="filterPrioritas">Hanya Prioritas</label>
-            </div>
-            <button type="submit" class="btn btn-primary mt-2">Filter</button>
-        </form>
-
-        <div class="row">
-            <?php foreach ($lokasiWisata as $lokasi) : ?>
-                <!-- Tambahkan logika untuk menampilkan artikel sesuai dengan filter -->
-                <?php
-                $showArticle = true;
-
-                // Filter berdasarkan desa
-                if (isset($_GET['desa']) && $_GET['desa'] != '' && $lokasi['tag_lokasi'] != $_GET['desa']) {
-                    $showArticle = false;
-                }
-
-                // Filter berdasarkan prioritas
-                if (isset($_GET['prioritas']) && $_GET['prioritas'] == 'on' && $lokasi['prioritas'] != 'Ya') {
-                    $showArticle = false;
-                }
-
-                // Tampilkan artikel jika memenuhi kriteria
-                if ($showArticle) :
-                ?>
-                    <div class="col-md-4 mb-4">
+        <section id="desa-wisata">
+            <h2>List Desa Wisata</h2>
+            <div class="row">
+                <div class="col-md-3 mb-4">
+                    <a href="/" class="card-link">
                         <div class="card">
-                            <img class="card-img-top" style="width:auto; height: 150px; object-fit:cover;" src="<?= base_url('assets/img/' . $lokasi['foto_lokasi']) ?>" alt="<?= $lokasi['nama_lokasi'] ?>">
-                            <div class="card-body">
-                                <h5 class="card-title"><?= $lokasi['nama_lokasi'] ?></h5>
-                                <p class="text-muted"><?= $lokasi['tag_lokasi'] ?></p>
-                                <a href="<?= base_url('detail_lokasi/' . $lokasi['id_lokasi']) ?>" class="btn btn-primary">Baca Selengkapnya</a>
-                            </div>
+                            <img class="card-img-top" src="<?= base_url('assets/required/tengallinggah.png') ?>" alt="tengallinggah">
                         </div>
-                    </div>
-                <?php endif; ?>
-            <?php endforeach; ?>
-        </div>
-        <!-- End Artikel Lokasi Wisata -->
-        <hr>
-        <!-- card desa -->
-        <h2>List Desa Wisata</h2>
-        <div class="row">
-            <div class="col-md-3 mb-4">
-                <a href="/" class="card-link">
-                    <div class="card">
-                        <img class="card-img-top" src="<?= base_url('assets/required/tengallinggah.png') ?>" alt="tengallinggah">
-                    </div>
-                </a>
+                    </a>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <a href="#" class="card-link">
+                        <div class="card">
+                            <img class="card-img-top" src="<?= base_url('assets/required/wanagiri.png') ?>" alt="wanagiri">
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <a href="#" class="card-link">
+                        <div class="card">
+                            <img class="card-img-top" src="<?= base_url('assets/required/ambengan.png') ?>" alt="Desa Ambengan">
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <a href="#" class="card-link">
+                        <div class="card">
+                            <img class="card-img-top" src="<?= base_url('assets/required/baktiseraga.png') ?>" alt="Desa Bakti Seraga">
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <a href="#" class="card-link">
+                        <div class="card">
+                            <img class="card-img-top" src="<?= base_url('assets/required/panji.png') ?>" alt="Desa Panji">
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <a href="#" class="card-link">
+                        <div class="card">
+                            <img class="card-img-top" src="<?= base_url('assets/required/panjianom.png') ?>" alt="Desa Panjianom">
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <a href="#" class="card-link">
+                        <div class="card">
+                            <img class="card-img-top" src="<?= base_url('assets/required/sambangan.png') ?>" alt="Desa Sambangan">
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <a href="#" class="card-link">
+                        <div class="card">
+                            <img class="card-img-top" src="<?= base_url('assets/required/selat.png') ?>" alt="Desa Selat">
+                        </div>
+                    </a>
+                </div>
+                <!-- Tambahkan card lainnya sesuai dengan format di atas -->
             </div>
-            <div class="col-md-3 mb-4">
-                <a href="#" class="card-link">
-                    <div class="card">
-                        <img class="card-img-top" src="<?= base_url('assets/required/wanagiri.png') ?>" alt="wanagiri">
-                    </div>
-                </a>
+        </section>
+
+        <section id="about">
+            <!-- main page -->
+            <div class="row mb-4">
+                <div class="col-md-8 mb-4">
+                    <h2>Tentang Kami</h2>
+                    <p>DenBukit merupakan gabungan dari delapan Desa Wisata yang berada di Kabupaten Buleleng, sebagai bentuk kerjasama dalam mengembangkan potensi WISATA yang dimiliki setiap Desa.</p>
+                </div>
+                <div class="col-md-4 mb-5">
+                    <h2>Kontak Kami</h2>
+                    <hr>
+                    <address>
+                        <strong>Alamat</strong>
+                        <br>Jln. Udayana No. 11, Singaraja
+                        <br>Kec. Buleleng, Kabupaten Buleleng, Bali 81116
+                    </address>
+                    <address>
+                        <abbr title="Telepon">Telepon:</abbr>
+                        +62 87765310940
+                        <br>
+                        <abbr title="Email">Email:</abbr>
+                        <a href="mailto:denbukit.wisata@gmail.com">DenBukit CS</a>
+                    </address>
+                </div>
             </div>
-            <div class="col-md-3 mb-4">
-                <a href="#" class="card-link">
-                    <div class="card">
-                        <img class="card-img-top" src="<?= base_url('assets/required/ambengan.png') ?>" alt="Desa Ambengan">
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-3 mb-4">
-                <a href="#" class="card-link">
-                    <div class="card">
-                        <img class="card-img-top" src="<?= base_url('assets/required/baktiseraga.png') ?>" alt="Desa Bakti Seraga">
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-3 mb-4">
-                <a href="#" class="card-link">
-                    <div class="card">
-                        <img class="card-img-top" src="<?= base_url('assets/required/panji.png') ?>" alt="Desa Panji">
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-3 mb-4">
-                <a href="#" class="card-link">
-                    <div class="card">
-                        <img class="card-img-top" src="<?= base_url('assets/required/panjianom.png') ?>" alt="Desa Panjianom">
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-3 mb-4">
-                <a href="#" class="card-link">
-                    <div class="card">
-                        <img class="card-img-top" src="<?= base_url('assets/required/sambangan.png') ?>" alt="Desa Sambangan">
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-3 mb-4">
-                <a href="#" class="card-link">
-                    <div class="card">
-                        <img class="card-img-top" src="<?= base_url('assets/required/selat.png') ?>" alt="Desa Selat">
-                    </div>
-                </a>
-            </div>
-            <!-- Tambahkan card lainnya sesuai dengan format di atas -->
-        </div>
-        <hr>
-        <!-- end card desa -->
-        <br>
-        <!-- main page -->
-        <div class="row mb-4">
-            <div class="col-md-8 mb-4">
-                <h2>Tentang Kami</h2>
-                <hr>
-                <p>DenBukit merupakan gabungan dari delapan Desa Wisata yang berada di Kabupaten Buleleng, sebagai bentuk kerjasama dalam mengembangkan potensi WISATA yang dimiliki setiap Desa.</p>
-            </div>
-            <div class="col-md-4 mb-5">
-                <h2>Kontak Kami</h2>
-                <hr>
-                <address>
-                    <strong>Alamat</strong>
-                    <br>Jln. Udayana No. 11, Singaraja
-                    <br>Kec. Buleleng, Kabupaten Buleleng, Bali 81116
-                </address>
-                <address>
-                    <abbr title="Telepon">Telepon:</abbr>
-                    +62 87765310940
-                    <br>
-                    <abbr title="Email">Email:</abbr>
-                    <a href="mailto:denbukit.wisata@gmail.com">DenBukit CS</a>
-                </address>
-            </div>
-        </div>
-        <!-- end main page -->
+            <!-- end main page -->
+        </section>
+
     </div>
     <!-- footer -->
     <footer class="py-3" style="background-color: #96B6C5;">
         <div class="container">
-            <p class="m-0 text-center text-black"><b>PemKab Buleleng &copy; 2023</b></p>
+            <p class="m-0 text-center text-black"><b>DenBukit &copy; 2023</b></p>
         </div>
     </footer>
     <!-- end footer -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script>
+        // Fungsi untuk menggulir otomatis ke bagian tertentu
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        }
+    </script>
 </body>
 
 </html>

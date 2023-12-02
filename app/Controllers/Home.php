@@ -9,8 +9,8 @@ class Home extends BaseController
         if (session()->get('logged_in')) {
             return redirect()->back();
         }
+        $data['title'] = 'DenBukit | Informasi Wisata';
         // $data['prioritizedLocations'] = $this->lokasiModel->where('prioritas', 'Ya')->findAll();
-        $data['lokasiWisata'] = $this->lokasiModel->findAll();
         return view('welcome_message', $data);
     }
 
@@ -31,7 +31,7 @@ class Home extends BaseController
         $prioritas = $this->request->getGet('prioritas');
 
         // Redirect ke halaman artikel dengan parameter filter
-        return redirect()->to("/?desa=$desa&prioritas=$prioritas");
+        return redirect()->to("artikel/?desa=$desa&prioritas=$prioritas");
     }
 
     public function detailLoc($id_lokasi)
@@ -39,5 +39,19 @@ class Home extends BaseController
         $data['title'] = 'DenBukit | Info Lokasi';
         $data['infoloc'] = $this->lokasiModel->find($id_lokasi);
         return view('info_lokasi', $data);
+    }
+
+    public function artikel()
+    {
+        $data['title'] = 'DenBukit | Artikel Tempat Wisata';
+        $data['lokasiWisata'] = $this->lokasiModel->findAll();
+        return view('artikel', $data);
+    }
+
+    public function event()
+    {
+        $data['title'] = 'DenBukit | Event Tempat Wisata';
+        $data['eventWisata'] = $this->eventModel->findAll();
+        return view('event', $data);
     }
 }

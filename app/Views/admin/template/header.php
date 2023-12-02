@@ -14,7 +14,10 @@
     <!-- End Node Modules -->
     <!-- Another addon -->
     <link rel="stylesheet" href="<?= base_url('assets/tinymce/js/tinymce/skins/ui/oxide/skin.min.css') ?>">
-
+    <!-- Add the slick-theme.css if you want default styling -->
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <!-- Add the slick-theme.css if you want default styling -->
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
     <style>
         body {
             display: flex;
@@ -40,6 +43,29 @@
 
         .card {
             margin-bottom: 20px;
+        }
+
+        #lokasiVideo {
+            display: block;
+            margin: 0 auto;
+            /* Membuat video berada di tengah */
+        }
+
+        #playVideoBtn {
+            display: block;
+            margin: 20px auto 10px;
+            /* Menambahkan jarak atas 10px */
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #playVideoBtn:hover {
+            background-color: #45a049;
         }
 
         footer {

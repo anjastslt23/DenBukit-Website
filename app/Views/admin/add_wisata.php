@@ -47,18 +47,39 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="foto_lokasi">
-                                    <i class="fas fa-image"></i> Upload Foto Lokasi:
+                                    <i class="fas fa-image"></i> Foto Lokasi (Maksimal 10):
                                 </label>
-                                <input type="file" class="form-control-file" id="foto_lokasi" name="foto_lokasi">
+                                <input type="file" class="form-control-file" id="foto_lokasi" name="foto_lokasi[]" multiple accept="image/*" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="video_lokasi">
+                                    <i class="fas fa-video"></i> Video Terkait (Maksimal 1):
+                                </label>
+                                <input type="file" class="form-control-file" id="video_lokasi" name="video_lokasi" accept="video/*">
                             </div>
                         </div>
-
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="harga_masuk">
                                     <i class="fas fa-money-bill-wave"></i> Harga Masuk:
                                 </label>
                                 <input type="text" class="form-control" id="harga_masuk" name="harga_masuk" placeholder="Masukkan harga masuk" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="cp_1">
+                                    <i class="fas fa-phone"></i> Contact Person 1:
+                                </label>
+                                <input type="text" class="form-control" id="cp_1" name="cp_1" placeholder="Masukkan CP pertama" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="cp_2">
+                                    <i class="fas fa-phone"></i> Contact Person 2:
+                                </label>
+                                <input type="text" class="form-control" id="cp_2" name="cp_2" placeholder="Masukkan CP kedua" required>
                             </div>
                         </div>
                     </div>
@@ -80,7 +101,7 @@
 
     <footer class="py-3" style="background-color: #96B6C5;">
         <div class="container">
-            <p class="m-0 text-center text-black"><b>PemKab Buleleng &copy; 2023</b></p>
+            <p class="m-0 text-center text-black"><b>DenBukit &copy; 2023</b></p>
         </div>
     </footer>
 </body>
