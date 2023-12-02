@@ -71,7 +71,7 @@
         <div class="card shadow">
             <div class="card-body">
                 <h5 class="card-title">Data Event Wisata</h5>
-                <a href="form_lokasi" class="btn btn-primary">
+                <a href="form_event" class="btn btn-primary">
                     <i class="fas fa-plus" style="margin-right: 5px;"></i> Buat Event
                 </a>
                 <div class="table-responsive">

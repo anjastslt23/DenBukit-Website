@@ -25,6 +25,7 @@ $routes->group('admin', ['filter' => 'authguard'], function ($routes) {
         $routes->post('proses_data', 'Admin\AddWisata::ProsesLokasi');
         $routes->get('lokasi/hapus/(:segment)', 'Admin\AddWisata::hapusLokasi/$1');
         $routes->get('lokasi/set_prioritas/(:segment)/(:segment)', 'Admin\AddWisata::setPrioritas/$1/$2');
+        $routes->get('form_event', 'Admin\AddEvent::index');
         // 
     });
 });
