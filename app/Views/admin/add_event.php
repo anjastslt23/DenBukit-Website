@@ -25,7 +25,7 @@
         <div class="card shadow">
             <div class="card-body">
                 <h5 class="card-title"><i class="bi bi-calendar-plus"></i> Buat Event Baru</h5>
-                <form action="proses_data" method="post" enctype="multipart/form-data">
+                <form action="proses_event" method="post" enctype="multipart/form-data">
                     <?= csrf_field() ?>
                     <div class="row">
                         <div class="col-md-6">
@@ -34,6 +34,12 @@
                                     <i class="bi bi-geo-alt"></i> Nama Event:
                                 </label>
                                 <input type="text" class="form-control" id="nama_event" name="nama_event" placeholder="Masukkan nama tempat event" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="alamat">
+                                    <i class="bi bi-people"></i> Lokasi Event:
+                                </label>
+                                <input type="text" class="form-control" id="alamat" name="alamat" placeholder="Masukkan lokasi event berlangsung" required>
                             </div>
                             <div class="form-group">
                                 <label for="penyelenggara">
@@ -69,10 +75,10 @@
                                 <input type="date" class="form-control" id="tgl_selesai" name="tgl_selesai">
                             </div>
                             <div class="form-group">
-                                <label for="biaya">
+                                <label for="biaya_masuk">
                                     <i class="bi bi-currency-dollar"></i> Biaya:
                                 </label>
-                                <input type="text" class="form-control" id="biaya" name="biaya" placeholder="Masukkan biaya/harga tiket" required>
+                                <input type="text" class="form-control" id="biaya_masuk" name="biaya_masuk" placeholder="Masukkan biaya/harga tiket" required>
                             </div>
                             <div class="form-group">
                                 <label for="cp_1">
@@ -118,6 +124,7 @@
         <?php endforeach ?>
     <?php endif ?>
 </script>
+
 <script>
     function previewImages(event) {
         var previewContainer = document.getElementById('imagePreview');

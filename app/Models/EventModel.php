@@ -12,7 +12,7 @@ class EventModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['id_event', 'nama_event', 'penyelenggara', 'tag_admin', 'foto_event', 'deskripsi', 'tg;_mulai', 'tgl_selesai', 'biaya_masuk', 'cp_1', 'cp_2'];
+    protected $allowedFields    = ['id_event', 'nama_event', 'alamat_event', 'penyelenggara', 'tag_admin', 'foto_event', 'video_event', 'deskripsi', 'tgl_mulai', 'tgl_selesai', 'biaya_masuk', 'telp_admin', 'cp_1', 'cp_2'];
 
     // Dates
     protected $useTimestamps = true;

@@ -41,6 +41,13 @@ class Home extends BaseController
         return view('info_lokasi', $data);
     }
 
+    public function detailEvent($id_event)
+    {
+        $data['title'] = 'DenBukit | Info Lokasi';
+        $data['infoevent'] = $this->eventModel->find($id_event);
+        return view('info_event', $data);
+    }
+
     public function artikel()
     {
         $data['title'] = 'DenBukit | Artikel Tempat Wisata';

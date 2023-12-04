@@ -130,7 +130,7 @@
                     // Logika filter
                     $showArticle = true;
 
-                    if (isset($_GET['desa']) && $_GET['desa'] != '' && $event['tag_lokasi'] != $_GET['desa']) {
+                    if (isset($_GET['desa']) && $_GET['desa'] != '' && $event['tag_admin'] != $_GET['desa']) {
                         $showArticle = false;
                     }
 
@@ -146,21 +146,22 @@
                          <div class="card">
                              <?php
                                 // Pecahkan string nama file gambar menjadi array
-                                $fotoArray = explode(',', $event['foto_lokasi']);
+                                $fotoArray = explode(',', $event['foto_event']);
 
                                 // Ambil nama file gambar pertama (anda dapat menyesuaikan indeks sesuai kebutuhan)
                                 $firstFoto = reset($fotoArray);
 
                                 // Buat path lengkap untuk gambar
-                                $gambarPath = base_url('assets/img/' . $firstFoto);
+                                $gambarPath = base_url('assets/img/event/' . $firstFoto);
                                 ?>
 
-                             <img class="card-img-top" style="width:auto; height: 150px; object-fit:cover;" src="<?= $gambarPath ?>" alt="<?= $event['nama_lokasi'] ?>">
+                             <img class="card-img-top" style="width:auto; height: 150px; object-fit:cover;" src="<?= $gambarPath ?>" alt="<?= $event['nama_event'] ?>">
 
                              <div class="card-body">
-                                 <h5 class="card-title"><?= $event['nama_lokasi'] ?></h5>
-                                 <p class="text-muted"><?= $event['tag_lokasi'] ?></p>
-                                 <a href="<?= base_url('detail_lokasi/' . $event['id_lokasi']) ?>" class="btn btn-primary">Baca Selengkapnya</a>
+                                 <h5 class="card-title"><?= $event['nama_event'] ?></h5>
+                                 <p class="text-muted"><?= $event['tag_admin'] ?></p>
+                                 <p class="text-muted">Rilis: <?= $event['created_at'] ?></p>
+                                 <a href="<?= base_url('detail_event/' . $event['id_event']) ?>" class="btn btn-primary">Baca Selengkapnya</a>
                              </div>
                          </div>
                      </div>

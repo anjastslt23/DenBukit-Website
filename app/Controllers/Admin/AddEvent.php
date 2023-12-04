@@ -13,15 +13,17 @@ class AddEvent extends BaseController
         return view('admin/add_event', $data);
     }
 
-    public function ProsesLokasi()
+    public function ProsesEvent()
     {
         // Validasi Form
         $validation = \Config\Services::validation();
         $validation->setRules([
-            'nama_lokasi' => 'required',
-            'alamat_lokasi' => 'required',
-            'harga_masuk' => 'required|numeric',
-            'foto_lokasi.*' => 'uploaded[foto_lokasi]|max_size[foto_lokasi,5120]|is_image[foto_lokasi]',
+            'nama_event' => 'required',
+            'alamat' => 'required',
+            'penyelenggara' => 'required',
+            'tgl_mulai' => 'required',
+            'biaya_masuk' => 'required|numeric',
+            'foto_event.*' => 'uploaded[foto_event]|max_size[foto_event,5120]|is_image[foto_event]',
             'cp_1' => 'required|numeric',
             'cp_2' => 'required|numeric',
         ]);
@@ -30,14 +32,10 @@ class AddEvent extends BaseController
             return redirect()->back()->withInput()->with('errors', $validation->getErrors());
         }
 
-        // Mendapatkan ID admin yang login (contoh: diambil dari sesi)
-        $tag = session()->get('asal_desa');
-        $telp = session()->get('telp_admin');
-
-        // Menggunakan helper generate_uuid() untuk membuat UUID baru
-        $id_lokasi = Uuid::uuid4()->toString();
-
-        $fotos = $this->request->getFiles('foto_lokasi');
+        $tag_admin = session()->get('asal_desa');
+        $telp_admin = session()->get('telp_admin');
+        $id_event = Uuid::uuid4()->toString();
+        $fotos = $this->request->getFiles('foto_event');
 
         // Inisialisasi array untuk menyimpan nama file foto
         $fotoNames = [];
@@ -50,25 +48,21 @@ class AddEvent extends BaseController
                     if (!in_array($file->getExtension(), $allowedTypes)) {
                         return redirect()->back()->withInput()->with('errors', ['Foto harus dalam format gambar (jpg, jpeg, png, gif).']);
                     }
-
                     // Mengecek ukuran file (maksimal 5MB)
                     if ($file->getSize() > 5 * 1024 * 1024) {
                         return redirect()->back()->withInput()->with('errors', ['Ukuran foto tidak boleh lebih dari 5MB.']);
                     }
-
                     // Membuat nama unik untuk file foto
                     $fotoNama = $file->getRandomName();
-
                     // Pindahkan file foto ke folder public/assets/img
-                    $file->move(ROOTPATH . 'public/assets/img/', $fotoNama);
-
+                    $file->move(ROOTPATH . 'public/assets/img/event/', $fotoNama);
                     // Simpan nama file ke dalam array
                     $fotoNames[] = $fotoNama;
                 }
             }
         }
         // Handle upload video jika diunggah
-        $video = $this->request->getFile('video_lokasi');
+        $video = $this->request->getFile('video_event');
         $videoNama = null;
 
         if ($video->isValid() && !$video->hasMoved()) {
@@ -77,50 +71,51 @@ class AddEvent extends BaseController
             if (!in_array($video->getExtension(), $allowedTypesVideo)) {
                 return redirect()->back()->withInput()->with('errors', ['Video harus dalam format mp4.']);
             }
-
             // Membuat nama unik untuk file video
             $videoNama = $video->getRandomName();
-
             // Pindahkan file video ke folder public/assets/videos
-            $video->move(ROOTPATH . 'public/assets/videos/', $videoNama);
+            $video->move(ROOTPATH . 'public/assets/videos/event/', $videoNama);
         }
 
         // Data yang akan disimpan ke database
         $data = [
-            'id_lokasi' => $id_lokasi,
-            'nama_lokasi' => $this->request->getPost('nama_lokasi'),
-            'alamat_lokasi' => $this->request->getPost('alamat_lokasi'),
-            'harga' => $this->request->getPost('harga_masuk'),
+            'id_event' => $id_event,
+            'nama_event' => $this->request->getPost('nama_event'),
+            'alamat_event' => $this->request->getPost('alamat'),
+            'penyelenggara' => $this->request->getPost('penyelenggara'),
             'deskripsi' => $this->request->getPost('deskripsi'),
-            'tag_lokasi' => $tag,
-            'telp_admin' => $telp,
+            'tgl_mulai' => $this->request->getPost('tgl_mulai'),
+            'tgl_selesai' => $this->request->getPost('tgl_selesai'),
+            'biaya_masuk' => $this->request->getPost('biaya_masuk'),
+            'tag_admin' => $tag_admin,
+            'telp_admin' => $telp_admin,
             'cp_1' => $this->request->getPost('cp_1'),
             'cp_2' => $this->request->getPost('cp_2'),
-            'foto_lokasi' => implode(',', $fotoNames), // Menyimpan nama file sebagai string dipisahkan koma
-            'video_lokasi' => $videoNama,
+            'foto_event' => implode(',', $fotoNames), // Menyimpan nama file sebagai string dipisahkan koma
+            'video_event' => $videoNama,
+            'created_at' => date('Y-m-d H:i:s'),
             // Tambahan field lain sesuai kebutuhan
         ];
-
+        // dd($data);
         // Simpan data ke database
-        $this->lokasiModel->insert($data);
-
+        $this->eventModel->insert($data);
         // Redirect atau berikan respons lain sesuai kebutuhan
-        return redirect()->to('admin/dashboard')->with('success', 'Lokasi berhasil ditambahkan');
+        return redirect()->to('admin/dashboard')->with('success', 'Event berhasil dibuat');
     }
 
 
-    public function hapusLokasi($id_lokasi)
+    public function hapusEvent($id_event)
     {
         // Lakukan pengecekan apakah akun dengan ID yang diberikan ada dalam database
-        $lokasi = $this->lokasiModel->find($id_lokasi);
+        $event = $this->eventModel->find($id_event);
 
-        if ($lokasi) {
+        if ($event) {
             // Jika akun ditemukan, hapus akun tersebut dari database
-            $this->lokasiModel->table('lokasi_wisata')->where('id_lokasi', $id_lokasi)->delete();
-            session()->setFlashdata('success', 'Akun berhasil dihapus.');
+            $this->eventModel->table('event_wisata')->where('id_event', $id_event)->delete();
+            session()->setFlashdata('success', 'Event telah dihapus.');
         } else {
             // Jika akun tidak ditemukan, tampilkan pesan error
-            session()->setFlashdata('error', 'Akun tidak ditemukan.');
+            session()->setFlashdata('error', 'Event tidak ditemukan.');
         }
 
         // Redirect ke halaman pengguna setelah penghapusan

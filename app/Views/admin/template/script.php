@@ -90,9 +90,6 @@
 </script>
 <!-- end sweetalert -->
 <!-- toastr -->
-<script>
-    <?php if (session()->has('success')) : ?>
-        toastr.success('<?php echo session('success'); ?>');
-    <?php endif; ?>
-</script>
+
+
 <!-- end toastr -->

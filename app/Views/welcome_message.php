@@ -6,6 +6,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?= $title ?></title>
+    <!-- Link Slick Carousel -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <style>
         body {
@@ -82,10 +86,37 @@
     </nav>
     <header class="text-black text-center py-5 mb-4" style="background-color: #96B6C5;">
         <div class="container">
-            <h1 class="font-weight-bold">Selamat Datang di DenBukit</h1>
-            <p>Selamat datang di DenBukit, website yang menyediakan informasi tempat-tempat wisata di Bali. Di sini, kamu bisa mengetahui berbagai destinasi wisata yang menarik dan populer di Bali, beserta tips, rekomendasi, dan ulasan yang bermanfaat. Kami akan membantu kamu merencanakan liburan impian kamu ke Bali dengan mudah dan nyaman. Ayo, jelajahi website DenBukit dan temukan keindahan Bali yang tak terlupakan!</p>
+            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    <!-- Slide 1 -->
+                    <div class="carousel-item active">
+                        <img src="<?= base_url('assets/required/1.jpg') ?>" class="d-block w-100" alt="Slide 1">
+                    </div>
+                    <!-- Slide 2 -->
+                    <div class="carousel-item">
+                        <img src="<?= base_url('assets/required/2.jpg') ?>" class="d-block w-100" alt="Slide 2">
+                    </div>
+                    <!-- Slide 3 -->
+                    <div class="carousel-item">
+                        <img src="<?= base_url('assets/required/3.jpg') ?>" class="d-block w-100" alt="Slide 3">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="<?= base_url('assets/required/4.jpg') ?>" class="d-block w-100" alt="Slide 3">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="<?= base_url('assets/required/5.jpg') ?>" class="d-block w-100" alt="Slide 3">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="<?= base_url('assets/required/6.jpg') ?>" class="d-block w-100" alt="Slide 3">
+                    </div>
+                </div>
+            </div>
         </div>
     </header>
+
+
+    <!-- Slider Container -->
+
 
     <div class="container">
         <section id="desa-wisata">
@@ -199,6 +230,35 @@
             }
         }
     </script>
+    <!-- Script untuk inisialisasi Carousel -->
+    <script>
+        $(document).ready(function() {
+            $('#myCarousel').carousel({
+                dots: true,
+                infinite: true,
+                speed: 500, // Kecepatan perpindahan slide (dalam milidetik)
+                slidesToShow: 1, // Jumlah slide yang ditampilkan pada satu waktu
+                slidesToScroll: 1 // Jumlah slide yang bergeser ketika tombol di tekan
+            });
+        });
+    </script>
+
+    <!-- <script>
+        $(document).ready(function() {
+            // Inisialisasi Slick Carousel
+            $('.slider-container').slick({
+                dots: true, // Menampilkan navigasi titik (pager)
+                infinite: true, // Mengaktifkan tampilan tak terbatas
+                speed: 500, // Kecepatan perpindahan slide (dalam milidetik)
+                slidesToShow: 1, // Jumlah slide yang ditampilkan pada satu waktu
+                slidesToScroll: 1 // Jumlah slide yang bergeser ketika tombol di tekan
+            });
+        });
+    </script> -->
+    <!-- Script Slick Carousel -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
 </body>
 
 </html>
