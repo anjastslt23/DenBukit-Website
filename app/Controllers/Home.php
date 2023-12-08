@@ -58,7 +58,10 @@ class Home extends BaseController
     public function event()
     {
         $data['title'] = 'DenBukit | Event Tempat Wisata';
-        $data['eventWisata'] = $this->eventModel->findAll();
+
+        // Mengambil data event dan mengurutkannya berdasarkan tanggal mulai (contoh)
+        $data['eventWisata'] = $this->eventModel->orderBy('tgl_mulai', 'DESC')->findAll();
+
         return view('event', $data);
     }
 }
