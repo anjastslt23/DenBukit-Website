@@ -56,7 +56,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="video_event">
-                                    <i class="bi bi-camera-video"></i> Video Terkait:
+                                    <i class="bi bi-camera-video"></i> Video Terkait (Rekomendasi format mp4, maks 1 file):
                                 </label>
                                 <input type="file" class="form-control-file" id="video_event" name="video_event" accept="video/*">
                             </div>
