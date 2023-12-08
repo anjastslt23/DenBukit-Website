@@ -84,7 +84,7 @@
             </ul>
         </div>
     </nav>
-    <header class="text-black text-center py-5 mb-4" style="background-color: #96B6C5;">
+    <header class="text-black text-center py-5 mb-4">
         <div class="container">
             <div id="myCarousel" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
@@ -110,6 +110,8 @@
                         <img src="<?= base_url('assets/required/6.jpg') ?>" class="d-block w-100" alt="Slide 3">
                     </div>
                 </div>
+                <br>
+                <p>Den Bukit merupakan sebutan dari daerah Buleleng yang pada saat zaman majapahit dipandang sebagai "daerah nun di sana di balik bukit". Daerah ini dulunya dianggap sebagai daerah yang misterius karena berada di balik bukit. Den Bukit terdiri dari delapan desa yang menjadi satu kesatuan. Desa tersebut, yaitu Desa Wanagiri, Ambengan, Sambangan, Panji, Panji Anom, Baktiseraga, Tegallinggah, dan Selat. Masing-masing desa tersebut memiliki sumber daya alam tersendiri yang menjadikannya unik dan menarik. Informasi mengenai keindahan sumber daya alam tersebut akan disajikan dalam web Den Bukit ini.</p>
             </div>
         </div>
     </header>
@@ -187,7 +189,7 @@
             <div class="row mb-4">
                 <div class="col-md-8 mb-4">
                     <h2>Tentang Kami</h2>
-                    <p>DenBukit merupakan gabungan dari delapan Desa Wisata yang berada di Kabupaten Buleleng, sebagai bentuk kerjasama dalam mengembangkan potensi WISATA yang dimiliki setiap Desa.</p>
+                    <p class="text-justify">Den Bukit merupakan sebutan dari daerah Buleleng yang pada saat zaman majapahit dipandang sebagai "daerah nun di sana di balik bukit". Daerah ini dulunya dianggap sebagai daerah yang misterius karena berada di balik bukit. Den Bukit terdiri dari delapan desa yang menjadi satu kesatuan. Desa tersebut, yaitu Desa Wanagiri, Ambengan, Sambangan, Panji, Panji Anom, Baktiseraga, Tegallinggah, dan Selat. Masing-masing desa tersebut memiliki sumber daya alam tersendiri yang menjadikannya unik dan menarik. Informasi mengenai keindahan sumber daya alam tersebut akan disajikan dalam web Den Bukit ini.</p>
                 </div>
                 <div class="col-md-4 mb-5">
                     <h2>Kontak Kami</h2>
