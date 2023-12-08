@@ -73,7 +73,7 @@ class AddWisata extends BaseController
 
         if ($video->isValid() && !$video->hasMoved()) {
             // Mengecek tipe file yang diterima (hanya video mp4)
-            $allowedTypesVideo = ['mp4'];
+            $allowedTypesVideo = ['mp4', 'm4v', 'mov', 'asf', 'avi', 'wmv', 'm2ts', '3g2', 'mkv'];
             if (!in_array($video->getExtension(), $allowedTypesVideo)) {
                 return redirect()->back()->withInput()->with('errors', ['Video harus dalam format mp4.']);
             }

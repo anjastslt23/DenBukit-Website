@@ -53,7 +53,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="video_lokasi">
-                                    <i class="fas fa-video"></i> Video Terkait (Maksimal 1):
+                                    <i class="fas fa-video"></i> Video Terkait (Rekomendasi format mp4, maks 1 file):
                                 </label>
                                 <input type="file" class="form-control-file" id="video_lokasi" name="video_lokasi" accept="video/*">
                             </div>
