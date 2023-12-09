@@ -14,8 +14,8 @@
             </ul>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#" onclick="logoutConfirmation()">
-                        <i class="fas fa-sign-out-alt"></i> <b>Logout</b>
+                    <a class="nav-link" href="logout"">
+                        <i class=" fas fa-sign-out-alt"></i> <b>Logout</b>
                     </a>
                 </li>
             </ul>
