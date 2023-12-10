@@ -6,11 +6,10 @@
 <script src="<?= base_url('assets/tinymce/js/tinymce/tinymce.min.js') ?>"></script>
 
 <!-- Node Modules -->
-<script src="<?= base_url('node_modules/jquery/dist/jquery.min.js') ?>"></script>
-<script src="<?= base_url('node_modules/sweetalert2/dist/sweetalert2.min.js') ?>"></script>
-<script src="<?= base_url('node_modules/datatables.net/js/jquery.dataTables.js') ?>"></script>
-<script type="text/javascript" src="<?= base_url('node_modules/toastr/build/toastr.min.js') ?>"></script>
-<!-- End Node Modules -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.1/dist/sweetalert2.all.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/datatables.net-bs4@1.13.8/js/dataTables.bootstrap4.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/toastr@2.1.4/toastr.min.js"></script><!-- End Node Modules -->
 <!-- Logout confirmation -->
 <script>
     function logoutConfirmation() {

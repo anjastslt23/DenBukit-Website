@@ -9,9 +9,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <!-- Node Modules -->
-    <link rel="stylesheet" href="<?= base_url('node_modules/datatables.net-dt/css/jquery.dataTables.min.css') ?>">
-    <link rel="stylesheet" type="text/css" href="<?= base_url('node_modules/toastr/build/toastr.min.css') ?>">
-    <!-- End Node Modules -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/datatables.net-bs4@1.13.8/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastr@2.1.4/build/toastr.min.css"> <!-- End Node Modules -->
     <!-- Another addon -->
     <link rel="stylesheet" href="<?= base_url('assets/tinymce/js/tinymce/skins/ui/oxide/skin.min.css') ?>">
     <!-- Add the slick-theme.css if you want default styling -->
@@ -72,6 +71,6 @@
             margin-top: auto;
         }
     </style>
-    <link rel="stylesheet" href="<?= base_url('node_modules/sweetalert2/dist/sweetalert2.min.css') ?>">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.1/dist/sweetalert2.min.css">
 </head>
 <?= view('admin/template/script') ?>
