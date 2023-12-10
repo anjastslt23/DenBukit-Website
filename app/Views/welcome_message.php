@@ -205,6 +205,9 @@
                         <br>
                         <abbr title="Email">Email:</abbr>
                         <a href="mailto:denbukit.wisata@gmail.com">DenBukit CS</a>
+                        <br>
+                        <abbr title="Instagram">Instagram:</abbr>
+                        <a href="https://www.instagram.com/kawasandenbukit/"> kawasandenbukit</a>
                     </address>
                 </div>
             </div>
