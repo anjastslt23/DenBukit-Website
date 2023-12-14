@@ -97,7 +97,7 @@
      <div class="container">
          <!-- Artikel Lokasi Wisata -->
          <!-- Formulir Filter -->
-         <form action="<?= base_url('filter') ?>" method="GET" class="mb-3">
+         <form action="<?= base_url('filter-event') ?>" method="GET" class="mb-3">
              <?= csrf_field() ?>
              <div class="form-group">
                  <label for="filterDesa">Filter Event Berdasarkan Desa:</label>
@@ -114,6 +114,10 @@
                      <option value="Desa Selat">Selat</option>
                      <!-- Tambahkan opsi desa lainnya -->
                  </select>
+             </div>
+             <div class="form-group">
+                 <label for="filterTanggal">Filter Event Berdasarkan Tanggal:</label>
+                 <input type="date" name="tanggal" id="filterTanggal" class="form-control">
              </div>
              <div class="form-check">
                  <input type="checkbox" class="form-check-input" id="filterPrioritas" name="prioritas">
@@ -136,6 +140,15 @@
 
                     if (isset($_GET['prioritas']) && $_GET['prioritas'] == 'on' && $event['prioritas'] != 'Ya') {
                         $showArticle = false;
+                    }
+
+                    if (isset($_GET['tanggal']) && $_GET['tanggal'] != '') {
+                        $filterDate = strtotime($_GET['tanggal']);
+                        $eventDate = strtotime($event['created_at']);
+
+                        if ($eventDate < $filterDate) {
+                            $showArticle = false;
+                        }
                     }
 
                     // Tampilkan artikel jika memenuhi kriteria

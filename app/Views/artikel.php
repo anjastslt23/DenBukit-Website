@@ -96,7 +96,7 @@
      <div class="container">
          <!-- Artikel Lokasi Wisata -->
          <!-- Formulir Filter -->
-         <form action="<?= base_url('filter') ?>" method="GET" class="mb-3">
+         <form action="<?= base_url('filter-article') ?>" method="GET" class="mb-3">
              <?= csrf_field() ?>
              <div class="form-group">
                  <label for="filterDesa">Filter Artikel Berdasarkan Desa:</label>

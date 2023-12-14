@@ -24,15 +24,28 @@ class Home extends BaseController
         return $this->response->setJSON($prioritizedLocations);
     }
 
-    public function filter()
+    public function filterArticle()
     {
         // Ambil nilai filter dari request
         $desa = $this->request->getGet('desa');
         $prioritas = $this->request->getGet('prioritas');
+        $tanggal = $this->request->getGet('tanggal'); // Tambahkan ini
 
         // Redirect ke halaman artikel dengan parameter filter
-        return redirect()->to("artikel/?desa=$desa&prioritas=$prioritas");
+        return redirect()->to("artikel/?desa=$desa&prioritas=$prioritas&tanggal=$tanggal");
     }
+
+    public function filterEvent()
+    {
+        // Ambil nilai filter dari request
+        $desa = $this->request->getGet('desa');
+        $prioritas = $this->request->getGet('prioritas');
+        $tanggal = $this->request->getGet('tanggal'); // Tambahkan ini
+
+        // Redirect ke halaman artikel dengan parameter filter
+        return redirect()->to("event/?desa=$desa&prioritas=$prioritas&tanggal=$tanggal");
+    }
+
 
     public function detailLoc($id_lokasi)
     {
