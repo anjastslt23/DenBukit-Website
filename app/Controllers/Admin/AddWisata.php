@@ -20,10 +20,9 @@ class AddWisata extends BaseController
         $validation->setRules([
             'nama_lokasi' => 'required',
             'alamat_lokasi' => 'required',
-            'harga_masuk' => 'required|numeric',
+            'harga_masuk' => 'required',
             'foto_lokasi.*' => 'uploaded[foto_lokasi]|max_size[foto_lokasi,5120]|is_image[foto_lokasi]',
-            'cp_1' => 'required|numeric',
-            'cp_2' => 'required|numeric',
+            'cp_1' => 'required',
         ]);
 
         if (!$validation->withRequest($this->request)->run()) {
@@ -95,7 +94,6 @@ class AddWisata extends BaseController
             'tag_lokasi' => $tag,
             'telp_admin' => $telp,
             'cp_1' => $this->request->getPost('cp_1'),
-            'cp_2' => $this->request->getPost('cp_2'),
             'foto_lokasi' => implode(',', $fotoNames), // Menyimpan nama file sebagai string dipisahkan koma
             'video_lokasi' => $videoNama,
             // Tambahan field lain sesuai kebutuhan

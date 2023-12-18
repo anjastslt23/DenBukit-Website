@@ -47,7 +47,6 @@
                                 <p class="text-muted col-md-6">Kontak Admin: <?= $infoloc['telp_admin'] ?></p>
                                 <p class="text-muted col-md-6">Harga Masuk: <b><?= $infoloc['harga'] ?></b></p>
                                 <p class="text-muted col-md-6">Contact Person 1: <b><?= $infoloc['cp_1'] ?></b></p>
-                                <p class="text-muted col-md-6">Contact Person 2: <b><?= $infoloc['cp_2'] ?></b></p>
                             </div>
 
                             <hr>

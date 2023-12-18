@@ -22,10 +22,9 @@ class AddEvent extends BaseController
             'alamat' => 'required',
             'penyelenggara' => 'required',
             'tgl_mulai' => 'required',
-            'biaya_masuk' => 'required|numeric',
+            'biaya_masuk' => 'required',
             'foto_event.*' => 'uploaded[foto_event]|max_size[foto_event,5120]|is_image[foto_event]',
-            'cp_1' => 'required|numeric',
-            'cp_2' => 'required|numeric',
+            'cp_1' => 'required',
         ]);
 
         if (!$validation->withRequest($this->request)->run()) {
@@ -90,7 +89,6 @@ class AddEvent extends BaseController
             'tag_admin' => $tag_admin,
             'telp_admin' => $telp_admin,
             'cp_1' => $this->request->getPost('cp_1'),
-            'cp_2' => $this->request->getPost('cp_2'),
             'foto_event' => implode(',', $fotoNames), // Menyimpan nama file sebagai string dipisahkan koma
             'video_event' => $videoNama,
             'created_at' => date('Y-m-d H:i:s'),
