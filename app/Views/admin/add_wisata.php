@@ -55,7 +55,7 @@
                                 <label for="video_lokasi">
                                     <i class="fas fa-video"></i> Video Terkait (Rekomendasi format mp4, maks 1 file):
                                 </label>
-                                <input type="file" class="form-control-file" id="video_lokasi" name="video_lokasi" accept="video/*">
+                                <input type="file" class="form-control-file" id="video_lokasi" name="video_lokasi" accept="video/mp4/mov">
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -72,14 +72,6 @@
                                     <i class="fas fa-phone"></i> Contact Person 1:
                                 </label>
                                 <input type="text" class="form-control" id="cp_1" name="cp_1" placeholder="Masukkan CP pertama" required>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="cp_2">
-                                    <i class="fas fa-phone"></i> Contact Person 2:
-                                </label>
-                                <input type="text" class="form-control" id="cp_2" name="cp_2" placeholder="Masukkan CP kedua" required>
                             </div>
                         </div>
                     </div>

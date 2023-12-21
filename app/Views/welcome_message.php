@@ -218,7 +218,14 @@
     <!-- footer -->
     <footer class="py-3" style="background-color: #96B6C5;">
         <div class="container">
-            <p class="m-0 text-center text-black"><b>DenBukit &copy; 2023</b></p>
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-left">
+                    <p class="m-0">DenBukit &copy; 2023</p>
+                </div>
+                <div class="col-md-6 text-center text-md-right">
+                    <div id="google_translate_element">Terjemahkan ke:</div>
+                </div>
+            </div>
         </div>
     </footer>
     <!-- end footer -->
@@ -235,6 +242,14 @@
             }
         }
     </script>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en'
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     <!-- Script untuk inisialisasi Carousel -->
     <script>
         $(document).ready(function() {

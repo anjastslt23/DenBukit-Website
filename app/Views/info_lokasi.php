@@ -93,7 +93,7 @@
 
                                 <!-- Menampilkan video jika tersedia -->
                                 <video id="lokasiVideo" width="25%" height="auto" style="display: none;">
-                                    <source src="<?= base_url('assets/videos/' . $infoloc['video_lokasi']) ?>" type="video/mp4">
+                                    <source src="<?= base_url('assets/videos/' . $infoloc['video_lokasi']) ?>" type="video/mp4/mov">
                                     Your browser does not support the video tag.
                                 </video>
                             <?php
